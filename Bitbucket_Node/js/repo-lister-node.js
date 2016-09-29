@@ -5,9 +5,9 @@ var request = require('request');
 
 //var username = 'austincunningham';
 
-function loadRepo(userName) {
+function loadRepo(username) {
   var requestOptions = {
-    url: 'https://api.bitbucket.org/2.0/repositories/' + userName,
+    url: 'https://api.bitbucket.org/2.0/repositories/' + username,
     method: 'GET',
     json: {},
   };
@@ -16,6 +16,9 @@ function loadRepo(userName) {
     url: 'https://api.github.com/users/' + userName + '/repos',
     method: 'GET',
     json: {},
+    headers: {
+      'User-Agent:Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)'
+    }
   };*/
 
   request(requestOptions, (err, response, body) => {
@@ -26,11 +29,12 @@ function loadRepo(userName) {
         name: rb.values[i].name,
         clone_url: rb.values[i].links.clone[0].href,
       };
-      console.log('response: ' + response.body.values[i].name);
 
+      //console.log('response: ' + response.body.values[i].name);
 
       repos.push(repo);
     }
+
     console.log(repos);
   });
 };

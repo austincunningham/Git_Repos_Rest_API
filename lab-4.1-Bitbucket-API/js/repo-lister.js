@@ -8,7 +8,7 @@ $('#search_btn').click(function () {
 
   $.ajax({
     dataType: 'json',
-    url: 'https://api.bitbucket.org/2.0/repositories/' + userName,
+    url: 'https://api.bitbucket.org/2.0/repositories/' + userName +'/?pagelen=20',
     success: function (data) {
       console.log('success');
       for (let i = 0; i < data.values.length; i++) {

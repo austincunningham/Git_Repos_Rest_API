@@ -39,19 +39,28 @@ function loadVenues(locationName, venueKeyword) {
      };
      checkins.push(checkin);
      }*/
-
     for (let venue of venues) {
-      //for (let i = 0; i < venue.tips.length; i++) {
-      const checkin = {
-        name: venue.venue.name,
-        checkins: venue.venue.stats.checkinsCount,
-        users: venue.venue.stats.usersCount,
-        rating: venue.venue.rating,
-        url: venue.venue.url,
-        /*tips: venue.tips[i].text,
-         tipsUserFirstName: venue.tips[0].user.firstName,
-         tipsUserLastName: venue.tips[0].user.lastName,*/
+      if (venue.tips === undefined) {
+        const checkin = {
+          name: venue.venue.name,
+          checkins: venue.venue.stats.checkinsCount,
+          users: venue.venue.stats.usersCount,
+          rating: venue.venue.rating,
+          url: venue.venue.url,
+        };
+      }else {
+        const checkin = {
+          name: venue.venue.name,
+          checkins: venue.venue.stats.checkinsCount,
+          users: venue.venue.stats.usersCount,
+          rating: venue.venue.rating,
+          url: venue.venue.url,
+          tips: venue.tips[0].text,
+          /*tipsUserFirstName: venue.tips[0].user.firstName,
+          tipsUserLastName: venue.tips[0].user.lastName,*/
+        };
       };
+
       checkins.push(checkin);
       console.log(checkins);
     }
