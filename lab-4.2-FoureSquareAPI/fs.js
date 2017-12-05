@@ -40,25 +40,12 @@ function loadVenues(locationName, venueKeyword) {
      checkins.push(checkin);
      }*/
     for (let venue of venues) {
-      if (venue.tips === undefined) {
-        const checkin = {
-          name: venue.venue.name,
-          checkins: venue.venue.stats.checkinsCount,
-          users: venue.venue.stats.usersCount,
-          rating: venue.venue.rating,
-          url: venue.venue.url,
-        };
-      }else {
-        const checkin = {
-          name: venue.venue.name,
-          checkins: venue.venue.stats.checkinsCount,
-          users: venue.venue.stats.usersCount,
-          rating: venue.venue.rating,
-          url: venue.venue.url,
-          tips: venue.tips[0].text,
-          /*tipsUserFirstName: venue.tips[0].user.firstName,
-          tipsUserLastName: venue.tips[0].user.lastName,*/
-        };
+      const checkin = {
+        name: venue.venue.name,
+        checkins: venue.venue.stats.checkinsCount,
+        users: venue.venue.stats.usersCount,
+        rating: venue.venue.rating,
+        url: venue.venue.url,
       };
 
       checkins.push(checkin);

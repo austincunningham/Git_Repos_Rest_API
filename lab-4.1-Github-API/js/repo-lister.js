@@ -18,7 +18,7 @@ function populateTable(repoList) {
 }
 
 $('#clear_btn').click(function () {
-  //document.getElementById('#repo_table').innerHTML = '';
+  //document.getElementById('repo_table').innerHTML = '';
   location.reload();
 });
 
@@ -29,7 +29,7 @@ $('#search_btn').click(function () {
 
     $.ajax({
       dataType: 'json',
-      url: 'https://api.github.com/users/' + userName + '/repos?sort=' + sort,
+      url: 'https://api.github.com/users/' + userName + '/repos?sort=' + sort+'&per_page=100',
 
       success: function (data) {
           console.log('success');
