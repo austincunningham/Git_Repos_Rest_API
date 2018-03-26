@@ -12,8 +12,8 @@ function updateResult(result) {
 
 function populateTable(repoList) {
   for (var i = 0; i < repoList.length; i++) {
-    $('#repo_table tbody ').append('<tr><td><b>' + repoList[i].name + '</b>  </td><td>'
-        + repoList[i].clone_url + '</td></tr>');
+    $('#repo_table tbody ').append('<tr><td><b>' + repoList[i].name + '</b>  </td><td><a href="'
+        + repoList[i].clone_url + '">'+ repoList[i].clone_url +'</a></td></tr>');
   }
 }
 
