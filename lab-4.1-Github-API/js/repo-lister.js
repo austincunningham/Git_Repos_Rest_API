@@ -25,15 +25,15 @@ $('#clear_btn').click(function () {
 $('#search_btn').click(function () {
     var userName = $('#username').val();
     var sort = $('#select :selected').text();
-    console.log(userName);
+    console.log(userName, sort);
 
     $.ajax({
       dataType: 'json',
-      url: 'https://api.github.com/users/' + userName + '/repos?sort=' + sort+'&per_page=100',
+      url: 'https://api.github.com/users/' + userName + '/repos?sort=' + sort +'&per_page=100',
 
       success: function (data) {
           console.log('success');
-          updateResult(data.length + ' repos');
+          updateResult(data.length + ' public repos found');
           populateTable(data);
         },
 
@@ -46,29 +46,4 @@ $('#search_btn').click(function () {
     });
   });
 
-/*
-$('#search_btn').click(function () {
-
-  var userName = $('#username').val();
-  console.log(userName);
-
-  $.ajax({
-    dataType: 'json',
-    url: 'https://api.github.com/users/' + userName + '/repos?sort=update',
-
-    success: function (data) {
-      console.log('success');
-      updateResult(data.length + ' repos');
-      populateTable(data);
-    },
-
-    error: function (err) {
-      //console.log('fail');
-      //console.log(err.statusText);
-      updateResult(userName + ' ' + err.statusText);
-    },
-
-  });
-});
-*/
 
