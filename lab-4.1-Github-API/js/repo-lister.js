@@ -6,15 +6,17 @@
 $('.ui.dropdown').dropdown();
 
 function updateResult(result) {
-  $('#result-msg').text('');
+  //$('#result-msg').text('');
   $('#result-msg').text(result);
 }
 
 function populateTable(repoList) {
+  var content = '';
   for (var i = 0; i < repoList.length; i++) {
-    $('#repo_table tbody ').append('<tr><td><b>' + repoList[i].name + '</b>  </td><td><a href="'
-        + repoList[i].clone_url + '">'+ repoList[i].clone_url +'</a></td></tr>');
+    content += '<tr><td><b>' + repoList[i].name + '</b>  </td><td><a href="'
+        + repoList[i].clone_url + '">'+ repoList[i].clone_url +'</a></td></tr>';
   }
+  $('#repo_table tbody ').empty().append(content);
 }
 
 $('#clear_btn').click(function () {
