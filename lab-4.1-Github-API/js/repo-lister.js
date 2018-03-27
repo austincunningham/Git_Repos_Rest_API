@@ -13,14 +13,13 @@ function updateResult(result) {
 function populateTable(repoList) {
   var content = '';
   for (var i = 0; i < repoList.length; i++) {
-    content += '<tr><td><b>' + repoList[i].name + '</b>  </td><td><a href="'
+    content += '<tr><td><b>' + repoList[i].name + '</b></td><td><a href="'
         + repoList[i].clone_url + '">'+ repoList[i].clone_url +'</a></td></tr>';
   }
   $('#repo_table tbody ').empty().append(content);
 }
 
 $('#clear_btn').click(function () {
-  //document.getElementById('repo_table').innerHTML = '';
   location.reload();
 });
 
@@ -40,12 +39,24 @@ $('#search_btn').click(function () {
         },
 
       error: function (err) {
-        //console.log('fail');
-        //console.log(err.statusText);
         updateResult(userName + ' ' + err.statusText);
-      },
-
+      }
     });
+  $.ajax({
+    dataType: 'json',
+    url: 'https://api.github.com/users/' + userName,
+
+    success: function (userdata) {
+      console.log('success' , userdata.avatar_url);
+      //updateResult(userdata.length + ' public repos found');
+      //populateTable(userdata);
+    },
+
+    error: function (err) {
+      updateResult(userName + ' ' + err.statusText);
+    }
+  });
+
   });
 
 

@@ -19,30 +19,62 @@ List Github Repos and Clone URL's<i class="huge github icon"></i></h1>
 
 <h3>Enter Github user name and click search</h3>
 
-<div class="search">
-  <input type="text" name="username" id="username" class="search-input">
-  <button id="search_btn" class="search-btn">Search</button>
-  <select name="sort" class="ui dropdown" id="select">
-    <option value="">Sort</option>
-    <option value="updated">updated</option>
-    <option value="created">created</option>
-    <option value="pushed">pushed</option>
-    <option value="full_name">full_name</option>
-  </select>
-  <button id="clear_btn" class="search-btn">Clear list</button>
-  <span id="result-msg" class="result">  </span>
+<div class="ui grid">
+  <div class="one wide column"></div>
+  <div class="four wide column">
+    <div class="ui card">
+      <div class="image">
+        <img src="https://avatars2.githubusercontent.com/u/16667688?v=4">
+      </div>
+      <div class="content">
+        <a class="header">Kristy</a>
+        <div class="meta">
+          <span class="date">Joined in 2013</span>
+        </div>
+        <div class="description">
+          Kristy is an art director living in New York.
+        </div>
+      </div>
+      <div class="extra content">
+        <a>
+          <i class="user icon"></i>
+          22 Friends
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ten wide column">
+    <div class="search">
+      <input type="text" name="username" id="username" class="search-input">
+      <button id="search_btn" class="search-btn">Search</button>
+      <select name="sort" class="ui dropdown" id="select">
+        <option value="">Sort</option>
+        <option value="updated">updated</option>
+        <option value="created">created</option>
+        <option value="pushed">pushed</option>
+        <option value="full_name">full_name</option>
+      </select>
+      <button id="clear_btn" class="search-btn">Clear list</button>
+      <span id="result-msg" class="result">  </span>
+
+      <table class="repo_table" id="repo_table">
+        <thead>
+        <tr>
+          <th>Repo Name </th>
+          <th>Clone</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </div>
 
-<table class="repo_table" id="repo_table">
-  <thead>
-  <tr>
-    <th>Repo Name </th>
-    <th>Clone</th>
-  </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
+
+
 
 <script src="js/repo-lister.js" type="text/javascript"></script>
 </body>
