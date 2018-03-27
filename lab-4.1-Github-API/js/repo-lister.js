@@ -26,6 +26,7 @@ $('#clear_btn').click(function () {
 $('#search_btn').click(function () {
     var userName = $('#username').val();
     var sort = $('#select :selected').text();
+    var startdate;
     console.log(userName, sort);
 
     $.ajax({
@@ -47,9 +48,13 @@ $('#search_btn').click(function () {
     url: 'https://api.github.com/users/' + userName,
 
     success: function (userdata) {
-      console.log('success' , userdata.avatar_url);
-      //updateResult(userdata.length + ' public repos found');
-      //populateTable(userdata);
+      $('.header').text(userdata.name);
+      startdate = (userdata.created_at).split("T")[0];
+      $('.date').text('Account Created : '+startdate);
+      $('.description').text('Bio : '+userdata.bio );
+      $('.blog').text('Blog : '+userdata.blog );
+      $('#followers').text(userdata.followers );
+      $('#avatar').attr('src',userdata.avatar_url);
     },
 
     error: function (err) {
@@ -57,6 +62,6 @@ $('#search_btn').click(function () {
     }
   });
 
-  });
+});
 
 
