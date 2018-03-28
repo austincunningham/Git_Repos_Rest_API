@@ -3,11 +3,36 @@
  */
 
 /** force semantic ui forms to work*/
+var pagecount = 1;
+
 $('.ui.dropdown').dropdown();
 
 function updateResult(result) {
   //$('#result-msg').text('');
   $('#result-msg').text(result);
+}
+
+function getuser(){
+  var userName = $('#username').val();
+
+  $.ajax({
+    dataType: 'json',
+    url: 'https://api.github.com/users/' + userName,
+
+    success: function (userdata) {
+      $('.header').text(userdata.name);
+      startdate = (userdata.created_at).split("T")[0];
+      $('.date').text('Account Created : '+startdate);
+      $('.description').text('Bio : '+userdata.bio );
+      $('.blog').text('Blog : '+userdata.blog );
+      $('#followers').text(userdata.followers );
+      $('#avatar').attr('src',userdata.avatar_url);
+    },
+
+    error: function (err) {
+      updateResult(userName + ' ' + err.statusText);
+    }
+  });
 }
 
 function populateTable(repoList) {
@@ -31,7 +56,7 @@ $('#search_btn').click(function () {
 
     $.ajax({
       dataType: 'json',
-      url: 'https://api.github.com/users/' + userName + '/repos?sort=' + sort +'&per_page=100',
+      url: 'https://api.github.com/users/' + userName + '/repos?sort=' + sort +'&per_page=20',
 
       success: function (data) {
           console.log('success');
@@ -43,18 +68,24 @@ $('#search_btn').click(function () {
         updateResult(userName + ' ' + err.statusText);
       }
     });
+
+    getuser();
+});
+
+$('#next_btn').click(function () {
+  var userName = $('#username').val();
+  var sort = $('#select :selected').text();
+  pagecount++;
+  console.log(userName, sort);
+
   $.ajax({
     dataType: 'json',
-    url: 'https://api.github.com/users/' + userName,
+    url: 'https://api.github.com/users/' + userName + '/repos?sort=' + sort +'&page=' + pagecount + '&per_page=20',
 
-    success: function (userdata) {
-      $('.header').text(userdata.name);
-      startdate = (userdata.created_at).split("T")[0];
-      $('.date').text('Account Created : '+startdate);
-      $('.description').text('Bio : '+userdata.bio );
-      $('.blog').text('Blog : '+userdata.blog );
-      $('#followers').text(userdata.followers );
-      $('#avatar').attr('src',userdata.avatar_url);
+    success: function (data) {
+      console.log('success');
+      updateResult(data.length + ' public repos found');
+      populateTable(data);
     },
 
     error: function (err) {
@@ -62,6 +93,32 @@ $('#search_btn').click(function () {
     }
   });
 
+  getuser();
 });
+
+$('#back_btn').click(function () {
+  var userName = $('#username').val();
+  var sort = $('#select :selected').text();
+  pagecount--;
+  console.log(userName, sort);
+
+  $.ajax({
+    dataType: 'json',
+    url: 'https://api.github.com/users/' + userName + '/repos?sort=' + sort +'&page=' + pagecount + '&per_page=20',
+
+    success: function (data) {
+      console.log('success');
+      updateResult(data.length + ' public repos found');
+      populateTable(data);
+    },
+
+    error: function (err) {
+      updateResult(userName + ' ' + err.statusText);
+    }
+  });
+
+  getuser();
+});
+
 
 
