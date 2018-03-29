@@ -2,13 +2,13 @@
  * Created by austin on 20/09/2016.
  */
 
-/** force semantic ui forms to work*/
+
 var pagecount = 1;
 
+/** force semantic ui forms to work*/
 $('.ui.dropdown').dropdown();
 
 function updateResult(result) {
-  //$('#result-msg').text('');
   $('#result-msg').text(result);
 }
 
@@ -21,7 +21,7 @@ function getuser(){
 
     success: function (userdata) {
       $('.header').text(userdata.name);
-      startdate = (userdata.created_at).split("T")[0];
+      var startdate = (userdata.created_at).split("T")[0];
       $('.date').text('Account Created : '+startdate);
       $('.description').text('Bio : '+userdata.bio );
       $('.blog').text('Blog : '+userdata.blog );
@@ -49,9 +49,9 @@ $('#clear_btn').click(function () {
 });
 
 $('#search_btn').click(function () {
+    //console.log(config.secret);
     var userName = $('#username').val();
     var sort = $('#select :selected').text();
-    var startdate;
     console.log(userName, sort);
 
     $.ajax({
@@ -99,7 +99,9 @@ $('#next_btn').click(function () {
 $('#back_btn').click(function () {
   var userName = $('#username').val();
   var sort = $('#select :selected').text();
-  pagecount--;
+  if (pagecount !== 0 ) {
+    pagecount--;
+  }
   console.log(userName, sort);
 
   $.ajax({
