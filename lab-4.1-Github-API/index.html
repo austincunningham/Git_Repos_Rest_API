@@ -11,75 +11,78 @@
 </head>
 
 <body>
-<div class="ui inverted green segment">
-  <h1> <i class="huge git square icon"></i>
-List Github Repos and Clone URL's<i class="huge github icon"></i></h1>
-
-</div>
-
-<h3>Enter Github user name and click search</h3>
-
-<div class="ui grid">
-  <div class="one wide column"></div>
-  <div class="four wide column">
-    <div class="ui card">
-      <div class="image">
-        <img src="no-avatar.jpg" id="avatar">
-      </div>
-      <div class="content">
-        <a class="header"></a>
-        <div class="meta">
-          <span class="date"></span>
-        </div>
-        <div class="description">
-        </div>
-        <div class="blog">
-        </div>
-      </div>
-      <div class="extra content">
-        <a>
-          Followers : <i class="user icon" id="followers"> </i>
-
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <div class="ten wide column">
-    <div class="search">
-      <input type="text" name="username" id="username" class="search-input">
-      <button id="search_btn" class="search-btn">Search</button>
-      <select name="sort" class="ui dropdown" id="select">
-        <option value="">Sort</option>
-        <option value="updated">updated</option>
-        <option value="created">created</option>
-        <option value="pushed">pushed</option>
-        <option value="full_name">full_name</option>
-      </select>
-      <button id="clear_btn" class="search-btn">Clear list</button>
-      <span id="result-msg" class="result">  </span>
-
-      <table class="repo_table" id="repo_table">
-        <thead>
-        <tr>
-          <th>Repo Name </th>
-          <th>Clone</th>
-        </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-
-      <div>
-        <button id="back_btn" class="back-btn">Back</button>
-        <button id="next_btn" class="next-btn">Next</button>
-      </div>
+<div class="ui raised segment">
+  <div class="ui raised segment">
+    <div class="ui inverted green segment">
+      <h1> <i class="huge git square icon"></i>
+    List Github Repos and Clone URL's<i class="huge github icon"></i></h1>
 
     </div>
+
+    <h3>Enter Github user name and click search</h3>
+
+    <div class="ui grid">
+      <div class="one wide column"></div>
+      <div class="four wide column">
+        <div class="ui card">
+          <div class="image">
+            <img src="no-avatar.jpg" id="avatar">
+          </div>
+          <div class="content">
+            <a class="header"></a>
+            <div class="meta">
+              <span class="date"></span>
+            </div>
+            <div class="description">
+            </div>
+            <div class="blog">
+            </div>
+          </div>
+          <div class="extra content">
+            <a>
+              Followers : <i class="user icon" id="followers"> </i>
+
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ten wide column">
+        <div class="search">
+          <input type="text" name="username" id="username" class="search-input">
+          <button id="search_btn" class="search-btn">Search</button>
+          <select name="sort" class="ui dropdown" id="select">
+            <option value="">Sort</option>
+            <option value="updated">updated</option>
+            <option value="created">created</option>
+            <option value="pushed">pushed</option>
+            <option value="full_name">full_name</option>
+          </select>
+          <button id="clear_btn" class="search-btn">Clear list</button>
+          <span id="result-msg" class="result">  </span>
+
+          <table class="repo_table" id="repo_table">
+            <thead>
+            <tr>
+              <th>Repo Name </th>
+              <th>Clone</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+
+          <div>
+            <button id="back_btn" class="back-btn">Back</button>
+            <button id="next_btn" class="next-btn">Next</button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
   </div>
-
 </div>
-
 
 
 
